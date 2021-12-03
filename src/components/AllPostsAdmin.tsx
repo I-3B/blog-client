@@ -1,17 +1,21 @@
-import { useEffect, useState } from "react";
-import PostCard from "../components/PostCard";
+import React, { useEffect, useState } from "react";
+import PostCardAdmin from "../components/PostCardAdmin";
 import { BASE_URL } from "../index";
 import post from "../interfaces/post";
 import "../style/AllPosts.scss";
 import ErrorMessage from "./ErrorMessage";
 import Loading from "./Loading";
-function AllPosts() {
+function AllPostsAdmin() {
     const [error, setError] = useState<any>(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [posts, setPosts] = useState<post[]>([]);
     useEffect(() => {
-        fetch(BASE_URL + "/posts", {
+        const token = String(localStorage.getItem("token"));
+        fetch(BASE_URL + "/admin/posts", {
             mode: "cors",
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
         })
             .then((res) => res.json())
             .then(
@@ -25,7 +29,7 @@ function AllPosts() {
                 }
             );
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [isLoaded, error]);
     if (error) {
         return <ErrorMessage message={error.message} />;
     } else if (!isLoaded) {
@@ -34,9 +38,12 @@ function AllPosts() {
         return (
             <>
                 <ul className="posts-container">
-                    {posts.reverse().map((post) => (
-                        <li key={post._id} id={post._id}>
-                            {PostCard(post)}
+                    <li className="new-post">
+                        <a href="/admin/new">New Post+</a>
+                    </li>
+                    {posts.reverse().map((post: post) => (
+                        <li key={post._id}>
+                            <PostCardAdmin post={post} />
                         </li>
                     ))}
                 </ul>
@@ -45,4 +52,4 @@ function AllPosts() {
     }
 }
 
-export default AllPosts;
+export default AllPostsAdmin;

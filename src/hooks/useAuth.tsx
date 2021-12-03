@@ -47,6 +47,7 @@ function useAuth() {
                                     "username",
                                     result.username
                                 );
+                                localStorage.setItem("admin", result.admin);
                                 setAuthed(true);
                                 res("");
                             } else {

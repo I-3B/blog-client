@@ -4,6 +4,7 @@ import "../style/Header.scss";
 
 function Header() {
     const { authed } = useAuth();
+    const admin = localStorage.getItem("admin") === "true";
     return (
         <header className="page-header">
             <nav>
@@ -26,6 +27,11 @@ function Header() {
                             <Link to={"/logout"}>Logout</Link>
 
                             <span>({localStorage.getItem("username")}) </span>
+                        </li>
+                    )}
+                    {authed && admin && (
+                        <li>
+                            <Link to={"/admin"}>admin</Link>
                         </li>
                     )}
                     <li>

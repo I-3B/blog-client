@@ -7,6 +7,7 @@ import post from "../interfaces/post";
 import "../style/Post.scss";
 import ErrorMessage from "./ErrorMessage";
 import Loading from "./Loading";
+
 function Post() {
     const { authed, logout } = useAuth();
     const { postId } = useParams();
@@ -49,7 +50,6 @@ function Post() {
             if (result.comment) {
                 setNewComment((bool) => !bool);
             } else if (result.errors) {
-                console.log(result.errors);
                 setCommentFormErrors(
                     <ul>
                         {result.errors.map((error: any) => {
@@ -74,13 +74,14 @@ function Post() {
             .then((res) => res.json())
             .then(
                 (result) => {
-                    if (result.name === "CastError")
+                    if (result.msg) {
                         throw new Error("Error: 404 Page not Found");
+                    }
                     setIsLoaded(true);
                     setPost(result);
                 },
                 (error) => {
-                    setIsLoaded(true);
+                    setIsLoaded(false);
                     setError(error);
                 }
             )
@@ -96,7 +97,7 @@ function Post() {
             .then((res) => res.json())
             .then(
                 (result) => {
-                    if (result.name === "CastError") {
+                    if (result.message) {
                         throw new Error("Error: 404 Page not Found");
                     }
                     setComments(() => {
@@ -143,7 +144,7 @@ function Post() {
                     <h1>{post?.title}</h1>
                     <p>{post?.content}</p>
                     <span>
-                        {post
+                        {post?.publishedAt
                             ? new Date(post.publishedAt)
                                   .toISOString()
                                   .replace(/T/, " ")
@@ -168,10 +169,10 @@ function Post() {
                             <textarea
                                 name="comment"
                                 id="comment"
-                                cols={30}
+                                cols={20}
                                 rows={10}
-                                required
                             ></textarea>
+
                             <input type="submit" value="comment" />
                             {commentFormErrors}
                         </form>

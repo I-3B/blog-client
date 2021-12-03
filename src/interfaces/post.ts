@@ -1,7 +1,7 @@
 export default interface post {
     _id: string;
-    title: String;
-    content: String;
-    published: Boolean;
+    title: string;
+    content: string;
+    published: boolean;
     publishedAt: Date;
 }
