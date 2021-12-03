@@ -3,7 +3,7 @@ $transition: 0.4s;
 .page-header {
   max-width: 100%;
   background-color: rgb(34, 34, 34);
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
   ul {
     display: flex;
     flex-wrap: nowrap;
@@ -13,11 +13,11 @@ $transition: 0.4s;
     width: 100%;
   }
   li span {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: floralwhite;
   }
   a {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: floralwhite;
     text-decoration: underline 0.1em transparent;
     transition: color $transition, text-decoration $transition;
@@ -32,8 +32,8 @@ $transition: 0.4s;
   }
   .logo {
     border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     content: url("../logo.svg");
     border: 2px solid transparent;
     transition: border-color $transition;
@@ -49,6 +49,9 @@ $transition: 0.4s;
       height: 3rem;
     }
     a {
+      font-size: 1rem;
+    }
+    li span {
       font-size: 1rem;
     }
   }
