@@ -17,6 +17,7 @@ function Post() {
     const [comments, setComments] = useState<any>(<Loading />);
     const [newComment, setNewComment] = useState<Boolean>();
     const [commentFormErrors, setCommentFormErrors] = useState(<></>);
+    const [commentContent, setCommentContent] = useState("");
     const commentSubmitted = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData: any = new FormData(e.currentTarget);
@@ -49,6 +50,7 @@ function Post() {
                 .catch((error) => error);
             if (result.comment) {
                 setNewComment((bool) => !bool);
+                setCommentContent("");
             } else if (result.errors) {
                 setCommentFormErrors(
                     <ul>
@@ -171,6 +173,10 @@ function Post() {
                                 id="comment"
                                 cols={20}
                                 rows={10}
+                                value={commentContent}
+                                onChange={(e) => {
+                                    setCommentContent(e.target.value);
+                                }}
                             ></textarea>
 
                             <input type="submit" value="comment" />
