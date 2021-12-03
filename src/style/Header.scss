@@ -1,0 +1,55 @@
+$main-color-1: #5badf8;
+$transition: 0.4s;
+.page-header {
+  max-width: 100%;
+  background-color: rgb(34, 34, 34);
+  padding: 0.5rem 1rem;
+  ul {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: right;
+    gap: 1rem;
+    width: 100%;
+  }
+  li span {
+    font-size: 2rem;
+    color: floralwhite;
+  }
+  a {
+    font-size: 2rem;
+    color: floralwhite;
+    text-decoration: underline 0.1em transparent;
+    transition: color $transition, text-decoration $transition;
+  }
+  a:hover {
+    color: $main-color-1;
+    text-decoration-color: $main-color-1;
+  }
+
+  .li-logo {
+    margin-right: auto;
+  }
+  .logo {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    content: url("../logo.svg");
+    border: 2px solid transparent;
+    transition: border-color $transition;
+  }
+  .logo:hover {
+    border-color: $main-color-1;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page-header {
+    .logo {
+      width: 3rem;
+      height: 3rem;
+    }
+    a {
+      font-size: 1rem;
+    }
+  }
+}

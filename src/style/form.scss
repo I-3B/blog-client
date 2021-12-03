@@ -1,0 +1,78 @@
+$background-color: rgb(255, 255, 255);
+$main-color-1: #5badf8;
+$main-color-2: #333;
+
+.form {
+  color: $main-color-2;
+  background-color: darken($color: $background-color, $amount: 4%);
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  gap: 0.5rem;
+  position: relative;
+  header {
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    top: -0.75rem;
+  }
+  input[type="submit"] {
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+    padding: 0.5rem;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: #5badf8;
+  }
+  input[type="submit"]:hover,
+  input[type="submit"]:focus {
+    border-color: yellowgreen;
+  }
+
+  ul {
+    list-style: inside;
+    padding-left: 1rem;
+  }
+  .error {
+    margin: 1rem 0;
+    color: tomato;
+  }
+}
+.comment-form {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  label {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  span {
+    border-radius: 6px;
+    padding: 1px 5px;
+    background-color: $main-color-1;
+  }
+  textarea {
+    outline: 2px solid transparent;
+    font-size: 1.3rem;
+  }
+  textarea:focus {
+    outline-color: $main-color-1;
+  }
+  input[type="submit"] {
+    margin: 0;
+    margin-left: auto;
+  }
+}
+@media screen and (min-width: 480px) {
+  .form {
+    max-width: 40rem;
+  }
+  .comment-form {
+    max-width: 100%;
+  }
+}

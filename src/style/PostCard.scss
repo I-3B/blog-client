@@ -1,0 +1,50 @@
+$main-color-1: #5badf8;
+$main-color-2: #333;
+$background-color: rgb(255, 255, 255);
+$shadow: rgb(230, 230, 230);
+
+.post-card {
+  display: block;
+  position: relative;
+  padding: 3px;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0 1px 10px $shadow;
+
+  h3 {
+    padding: 0 0.5rem;
+    color: $main-color-2;
+    font-size: 3rem;
+    text-align: justify;
+  }
+  .fade-container {
+    position: relative;
+  }
+  .fade {
+    color: $main-color-2;
+    padding-bottom: 1rem;
+    margin: 2rem 1rem;
+    font-size: 1.1rem;
+    background: linear-gradient(to bottom, $main-color-2 30%, rgba(0, 0, 0, 0) 100%);
+    background-clip: text;
+    color: transparent;
+  }
+  .continue {
+    font-size: 1.3rem;
+    text-decoration: underline;
+    color: $main-color-1;
+    width: 100%;
+    position: absolute;
+    bottom: -3px;
+    text-align: center;
+  }
+  .date {
+    color: lighten($main-color-2, $amount: 30%);
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+}
+.post-card:hover {
+  background-color: darken($background-color, 3%);
+}

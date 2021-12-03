@@ -1,0 +1,81 @@
+$main-color-1: #5badf8;
+$main-color-2: #333;
+$shadow: rgb(224, 224, 224);
+$background-color: rgb(255, 255, 255);
+
+.post {
+  color: $main-color-2;
+  box-shadow: 0 1px 30px $shadow;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  position: relative;
+  h1 {
+    font-size: 3.5rem;
+  }
+  p {
+    text-align: start;
+    margin: 2rem 1rem;
+    font-size: 1.5rem;
+  }
+  span {
+    color: lighten($main-color-2, $amount: 40%);
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+}
+.comment-container {
+  margin: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  header {
+    font-size: 1.5rem;
+  }
+}
+.comment {
+  background-color: darken($background-color, 5%);
+  padding: 2rem;
+  width: 100%;
+  min-height: 4rem;
+  position: relative;
+  border-radius: 5px;
+  color: $main-color-2;
+  h3 {
+    padding: 0;
+    font-size: 1.4rem;
+    text-align: start;
+  }
+  p {
+    padding: 2rem 0.3rem;
+    font-size: 1.1rem;
+  }
+  span {
+    color: lighten($main-color-2, $amount: 40%);
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@media screen and (min-width: 480px) {
+  .post {
+    p {
+      font-size: 2rem;
+    }
+  }
+}
+@keyframes appear {
+  0% {
+    width: 90%;
+    opacity: 0.1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
