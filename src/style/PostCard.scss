@@ -21,6 +21,7 @@ $shadow: rgb(230, 230, 230);
     position: relative;
   }
   .fade {
+    white-space: pre-line;
     color: $main-color-2;
     padding-bottom: 1rem;
     margin: 2rem 1rem;
