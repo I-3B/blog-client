@@ -1,11 +1,14 @@
 import post from "../interfaces/post";
 import "../style/PostCard.scss";
+import { htmlDecode } from "./Post";
 function PostCard(props: post) {
     return (
         <a href={`/posts/${props._id}`} className="post-card">
-            <h3>{props.title}</h3>
+            <h3>{htmlDecode(props.title)}</h3>
             <div className="fade-container">
-                <p className="fade">{props.content.substring(0, 500)}...</p>
+                <p className="fade">
+                    {htmlDecode(props.content.substring(0, 500))}...
+                </p>
                 <p className="continue">Continue reading</p>
             </div>
             <span className="date">

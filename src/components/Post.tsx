@@ -112,7 +112,7 @@ function Post() {
                                         className="comment"
                                     >
                                         <h3>{comment.author}</h3>
-                                        <p>{comment.content}</p>
+                                        <p>{htmlDecode(comment.content)}</p>
                                         <span>
                                             {new Date(comment.publishedAt)
                                                 .toISOString()
@@ -142,19 +142,20 @@ function Post() {
     } else {
         return (
             <div>
-                <div className="post">
-                    <h1>{post?.title}</h1>
-                    <p>{post?.content}</p>
-                    <span>
-                        {post?.publishedAt
-                            ? new Date(post.publishedAt)
-                                  .toISOString()
-                                  .replace(/T/, " ")
-                                  .replace(/\..+/, "")
-                            : ""}
-                    </span>
-                </div>
-
+                {post && (
+                    <div className="post">
+                        <h1>{htmlDecode(post.title)}</h1>
+                        <p>{htmlDecode(post.content)}</p>
+                        <span>
+                            {post.publishedAt
+                                ? new Date(post.publishedAt)
+                                      .toISOString()
+                                      .replace(/T/, " ")
+                                      .replace(/\..+/, "")
+                                : ""}
+                        </span>
+                    </div>
+                )}
                 <ul className="comment-container">
                     <header>Comments</header>
                     {authed && (
@@ -190,3 +191,7 @@ function Post() {
     }
 }
 export default Post;
+export function htmlDecode(input: string) {
+    const doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
+}
