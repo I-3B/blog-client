@@ -175,12 +175,27 @@ function Post() {
                                 cols={20}
                                 rows={10}
                                 value={commentContent}
+                                onKeyDown={(e) => {
+                                    if (e.ctrlKey && e.key === "Enter") {
+                                        const submit: HTMLInputElement | null =
+                                            document.querySelector(
+                                                "#comment-submit"
+                                            );
+                                        if (submit) {
+                                            submit.click();
+                                        }
+                                    }
+                                }}
                                 onChange={(e) => {
                                     setCommentContent(e.target.value);
                                 }}
                             ></textarea>
 
-                            <input type="submit" value="comment" />
+                            <input
+                                type="submit"
+                                value="comment"
+                                id="comment-submit"
+                            />
                             {commentFormErrors}
                         </form>
                     )}
